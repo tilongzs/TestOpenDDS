@@ -1,0 +1,11 @@
+module TestA
+{
+	#pragma DCPS_DATA_TYPE "TestA::DataA"
+
+	struct DataA
+{
+	long	pos;
+	string	name;
+	long	length;
+};
+};

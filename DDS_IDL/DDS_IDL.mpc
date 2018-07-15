@@ -1,0 +1,8 @@
+project(*idl): dcps {
+  requires += no_opendds_safety_profile
+  TypeSupport_Files {
+	DataA.idl
+  }
+
+  custom_only = 1
+}
