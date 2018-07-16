@@ -24,10 +24,10 @@
  **/
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:149
+// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:149
 
-#ifndef _TAO_IDL_DATAATYPESUPPORTC_LEIDNG_H_
-#define _TAO_IDL_DATAATYPESUPPORTC_LEIDNG_H_
+#ifndef _TAO_IDL_DATAATYPESUPPORTC_JWERSX_H_
+#define _TAO_IDL_DATAATYPESUPPORTC_JWERSX_H_
 
 #include /**/ "ace/pre.h"
 
@@ -72,19 +72,19 @@
 #endif
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_ch.cpp:35
+// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_ch.cpp:35
 
 namespace TestA
 {
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_sequence\sequence_ch.cpp:99
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_sequence\sequence_ch.cpp:99
 
   typedef ::TAO::DCPS::ZeroCopyDataSeq< TestA::DataA, DCPS_ZERO_COPY_SEQ_DEFAULT_SIZE> DataASeq;
   
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_interface.cpp:748
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_interface.cpp:748
 
 #if !defined (_TESTA_DATAATYPESUPPORT__VAR_OUT_CH_)
 #define _TESTA_DATAATYPESUPPORT__VAR_OUT_CH_
@@ -98,7 +98,7 @@ namespace TestA
 #endif /* end #if !defined */
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:40
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:40
 
   class  DataATypeSupport
     : public virtual ::OpenDDS::DCPS::TypeSupport
@@ -107,7 +107,7 @@ namespace TestA
   public:
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
+    // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
 
     typedef DataATypeSupport_ptr _ptr_type;
     typedef DataATypeSupport_var _var_type;
@@ -123,7 +123,7 @@ namespace TestA
     static DataATypeSupport_ptr _nil (void);
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:137
+    // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:137
 
     virtual ::CORBA::Boolean _is_a (const char *type_id);
     virtual const char* _interface_repository_id (void) const;
@@ -145,7 +145,7 @@ namespace TestA
   };
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_interface.cpp:748
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_interface.cpp:748
 
 #if !defined (_TESTA_DATAADATAWRITER__VAR_OUT_CH_)
 #define _TESTA_DATAADATAWRITER__VAR_OUT_CH_
@@ -159,7 +159,7 @@ namespace TestA
 #endif /* end #if !defined */
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:40
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:40
 
   class  DataADataWriter
     : public virtual ::DDS::DataWriter
@@ -168,7 +168,7 @@ namespace TestA
   public:
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
+    // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
 
     typedef DataADataWriter_ptr _ptr_type;
     typedef DataADataWriter_var _var_type;
@@ -225,7 +225,7 @@ namespace TestA
       const ::TestA::DataA & instance_data) = 0;
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:137
+    // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:137
 
     virtual ::CORBA::Boolean _is_a (const char *type_id);
     virtual const char* _interface_repository_id (void) const;
@@ -247,7 +247,7 @@ namespace TestA
   };
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_interface.cpp:748
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_interface.cpp:748
 
 #if !defined (_TESTA_DATAADATAREADER__VAR_OUT_CH_)
 #define _TESTA_DATAADATAREADER__VAR_OUT_CH_
@@ -261,7 +261,7 @@ namespace TestA
 #endif /* end #if !defined */
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:40
+  // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:40
 
   class  DataADataReader
     : public virtual ::OpenDDS::DCPS::DataReaderEx
@@ -270,7 +270,7 @@ namespace TestA
   public:
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
+    // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
 
     typedef DataADataReader_ptr _ptr_type;
     typedef DataADataReader_var _var_type;
@@ -397,7 +397,7 @@ namespace TestA
       const ::TestA::DataA & instance_data) = 0;
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:137
+    // d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_ch.cpp:137
 
     virtual ::CORBA::Boolean _is_a (const char *type_id);
     virtual const char* _interface_repository_id (void) const;
@@ -419,12 +419,12 @@ namespace TestA
   };
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_ch.cpp:64
+// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_ch.cpp:64
 
 } // module TestA
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_arg_traits.cpp:66
+// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_arg_traits.cpp:66
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
@@ -439,7 +439,7 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_traits.cpp:60
+// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_traits.cpp:60
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
@@ -506,7 +506,7 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:1686
+// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:1686
 #if defined (__ACE_INLINE__)
 #include "DataATypeSupportC.inl"
 #endif /* defined INLINE */

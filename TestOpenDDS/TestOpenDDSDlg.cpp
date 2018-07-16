@@ -312,9 +312,10 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 				}
 
 				// 写数据
+				static int length = 10;
 				TestA::DataA dataA;
 				dataA.pos = 1;
-				dataA.length = 10;
+				dataA.length = length;
 				dataA.name = CStringA(_dataA_leftTopicData);
 
 				DDS::InstanceHandle_t handle = message_writer->register_instance(dataA);
@@ -584,6 +585,7 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 		DDS::ContentFilteredTopic_var cft =
 			_participant->create_contentfilteredtopic("带过滤条件的订阅",
 				topic,
+				//"name='aaa' and pos<1000",
 				"pos>0 and pos<1000",
 				StringSeq());
 
