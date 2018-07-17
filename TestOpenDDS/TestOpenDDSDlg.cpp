@@ -582,14 +582,17 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 		CDataReaderListenerImpl* dataReaderListener = new CDataReaderListenerImpl();
 		dataReaderListener->Init(this);
 
+		static int filterIndex = 1;
+		CStringA filterName;
+		filterName.Format("filter%d", filterIndex++);
 		DDS::ContentFilteredTopic_var cft =
-			_participant->create_contentfilteredtopic("带过滤条件的订阅",
+			_participant->create_contentfilteredtopic(filterName, // filterName不能相同
 				topic,
-				//"name='aaa' and pos<1000",
+				//"name='aaa' and pos<1000", // 字符串对比需要加单引号
 				"pos>0 and pos<1000",
 				StringSeq());
 
-		//	DDS::DataReader_var reader = subscriber->create_datareader(topic, // 不带过滤条件的订阅
+		//DDS::DataReader_var reader = subscriber->create_datareader(topic, // 不带过滤条件的订阅
 		DDS::DataReader_var reader = subscriber->create_datareader(cft,
 			dataReaderQos,// DATAREADER_QOS_DEFAULT
 			dataReaderListener,
