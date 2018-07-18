@@ -581,6 +581,7 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 		// 创建读监听器
 		CDataReaderListenerImpl* dataReaderListener = new CDataReaderListenerImpl();
 		dataReaderListener->Init(this);
+		DDS::DataReaderListener_var listener(dataReaderListener);
 
 		static int filterIndex = 1;
 		CStringA filterName;
@@ -595,7 +596,7 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 		//DDS::DataReader_var reader = subscriber->create_datareader(topic, // 不带过滤条件的订阅
 		DDS::DataReader_var reader = subscriber->create_datareader(cft,
 			dataReaderQos,// DATAREADER_QOS_DEFAULT
-			dataReaderListener,
+			listener,
 			OpenDDS::DCPS::DEFAULT_STATUS_MASK);
 
 		if (!reader)
