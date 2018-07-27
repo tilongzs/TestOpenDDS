@@ -24,7 +24,7 @@
  **/
 
 // TAO_IDL - Generated from
-// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:366
+// be\be_codegen.cpp:366
 
 
 #include "DataATypeSupportC.h"
@@ -36,7 +36,7 @@
 #endif /* !defined INLINE */
 
 // TAO_IDL - Generated from
-// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_cs.cpp:48
+// be\be_visitor_interface\interface_cs.cpp:48
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
 // Traits specializations for TestA::DataATypeSupport.
@@ -164,7 +164,7 @@ TestA::DataATypeSupport::marshal (TAO_OutputCDR & /* cdr */)
 }
 
 // TAO_IDL - Generated from
-// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_cs.cpp:48
+// be\be_visitor_interface\interface_cs.cpp:48
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
 // Traits specializations for TestA::DataADataWriter.
@@ -292,7 +292,7 @@ TestA::DataADataWriter::marshal (TAO_OutputCDR & /* cdr */)
 }
 
 // TAO_IDL - Generated from
-// d:\study\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_interface\interface_cs.cpp:48
+// be\be_visitor_interface\interface_cs.cpp:48
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
 // Traits specializations for TestA::DataADataReader.

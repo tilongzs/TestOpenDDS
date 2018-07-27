@@ -24,10 +24,10 @@
  **/
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:451
+// be\be_codegen.cpp:451
 
-#ifndef _TAO_IDL_DATAAS_SQ64S2_H_
-#define _TAO_IDL_DATAAS_SQ64S2_H_
+#ifndef _TAO_IDL_DATAAS_GVSOLQ_H_
+#define _TAO_IDL_DATAAS_GVSOLQ_H_
 
 #include /**/ "ace/pre.h"
 
@@ -44,7 +44,7 @@
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_arg_traits.cpp:66
+// be\be_visitor_arg_traits.cpp:66
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
@@ -54,7 +54,7 @@ namespace TAO
 {
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_arg_traits.cpp:945
+  // be\be_visitor_arg_traits.cpp:945
 
   template<>
   class SArg_Traits< ::TestA::DataA>
@@ -72,14 +72,14 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_sh.cpp:35
+// be\be_visitor_module\module_sh.cpp:35
 
 namespace POA_TestA
 {
   
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_sh.cpp:66
+// be\be_visitor_module\module_sh.cpp:66
 
 } // module TestA
 

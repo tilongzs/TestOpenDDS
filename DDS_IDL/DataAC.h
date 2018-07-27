@@ -24,10 +24,10 @@
  **/
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:149
+// be\be_codegen.cpp:149
 
-#ifndef _TAO_IDL_DATAAC_PD54HJ_H_
-#define _TAO_IDL_DATAAC_PD54HJ_H_
+#ifndef _TAO_IDL_DATAAC_CFDEH8_H_
+#define _TAO_IDL_DATAAC_CFDEH8_H_
 
 #include /**/ "ace/pre.h"
 
@@ -58,13 +58,13 @@
 #endif
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_ch.cpp:35
+// be\be_visitor_module\module_ch.cpp:35
 
 namespace TestA
 {
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:258
+  // be\be_type.cpp:258
 
   struct DataA;
 
@@ -81,13 +81,13 @@ namespace TestA
     DataA_out;
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_structure\structure_ch.cpp:48
+  // be\be_visitor_structure\structure_ch.cpp:48
 
   struct  DataA
   {
 
     // TAO_IDL - Generated from
-    // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_type.cpp:304
+    // be\be_type.cpp:304
 
     
     typedef DataA_var _var_type;
@@ -99,12 +99,12 @@ namespace TestA
   };
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_module\module_ch.cpp:64
+// be\be_visitor_module\module_ch.cpp:64
 
 } // module TestA
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_arg_traits.cpp:66
+// be\be_visitor_arg_traits.cpp:66
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
@@ -114,7 +114,7 @@ namespace TAO
 {
 
   // TAO_IDL - Generated from
-  // d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_arg_traits.cpp:945
+  // be\be_visitor_arg_traits.cpp:945
 
   template<>
   class Arg_Traits< ::TestA::DataA>
@@ -132,7 +132,7 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_traits.cpp:60
+// be\be_visitor_traits.cpp:60
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
@@ -145,7 +145,7 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_visitor_structure\cdr_op_ch.cpp:43
+// be\be_visitor_structure\cdr_op_ch.cpp:43
 
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
@@ -158,7 +158,7 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:1686
+// be\be_codegen.cpp:1686
 #if defined (__ACE_INLINE__)
 #include "DataAC.inl"
 #endif /* defined INLINE */

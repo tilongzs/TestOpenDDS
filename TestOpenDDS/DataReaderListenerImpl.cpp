@@ -54,57 +54,57 @@ CDataReaderListenerImpl::on_data_available(DDS::DataReader_ptr reader)
 {
 	TestA::DataADataReader_var reader_i = TestA::DataADataReader::_narrow(reader);
 
-	if (!reader_i) {
-		ACE_ERROR((LM_ERROR,
-			ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-			ACE_TEXT(" _narrow failed!\n")));
-		ACE_OS::exit(-1);
-	}
-
-	TestA::DataASeq dataA;
-	SampleInfoSeq sampleInfos;
-	ReturnCode_t ret = reader_i->take(dataA, sampleInfos, DDS::LENGTH_UNLIMITED, ANY_SAMPLE_STATE, ANY_VIEW_STATE, ANY_INSTANCE_STATE);
-	if (ret == DDS::RETCODE_OK)
-	{
-		CString tmpLog;
-		int sampleInfoLength = sampleInfos.length();
-		for (int i = 0; i < sampleInfoLength; ++i)
-		{
-			if (sampleInfos[i].valid_data)
-			{
-				tmpLog.Format(L"DataA name:%s pos:%d length:%d", CString(dataA[i].name), dataA[i].pos, dataA[i].length);
-				_dlg->AppendMSG(tmpLog);
-			}		
-		}
-	}
-	else
-	{
-		ASSERT(0);
-	}
-
-//	reader_i->return_loan(dataA, sampleInos);
-	
-// 	TestA::DataA dataA;
-// 	DDS::SampleInfo info;
-// 
-// 	DDS::ReturnCode_t error = reader_i->take_next_sample(dataA, info);
-// 
-// 	if (error == DDS::RETCODE_OK) {
-// 		std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
-// 		std::cout << "SampleInfo.instance_state = " << info.instance_state << std::endl;
-// 
-// 		if (info.valid_data) {
-// 			CString tmpLog;
-// 			tmpLog.Format(L"DataA name:%s pos:%d length:%d", CString(dataA.name), dataA.pos, dataA.length);
-// 			_dlg->AppendMSG(tmpLog);
-// 		}
-// 
-// 	}
-// 	else {
+// 	if (!reader_i) {
 // 		ACE_ERROR((LM_ERROR,
 // 			ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-// 			ACE_TEXT(" take_next_sample failed!\n")));
+// 			ACE_TEXT(" _narrow failed!\n")));
+// 		ACE_OS::exit(-1);
 // 	}
+// 
+// 	TestA::DataASeq dataA;
+// 	SampleInfoSeq sampleInfos;
+// 	ReturnCode_t ret = reader_i->take(dataA, sampleInfos, DDS::LENGTH_UNLIMITED, ANY_SAMPLE_STATE, ANY_VIEW_STATE, ANY_INSTANCE_STATE);
+// 	if (ret == DDS::RETCODE_OK)
+// 	{
+// 		CString tmpLog;
+// 		int sampleInfoLength = sampleInfos.length();
+// 		for (int i = 0; i < sampleInfoLength; ++i)
+// 		{
+// 			if (sampleInfos[i].valid_data)
+// 			{
+// 				tmpLog.Format(L"DataA name:%s pos:%d length:%d", CString(dataA[i].name), dataA[i].pos, dataA[i].length);
+// 				_dlg->AppendMSG(tmpLog);
+// 			}		
+// 		}
+// 	}
+// 	else
+// 	{
+// 		ASSERT(0);
+// 	}
+// 
+// 	reader_i->return_loan(dataA, sampleInfos);
+
+
+
+	
+	TestA::DataA dataA;
+	DDS::SampleInfo info;
+
+	DDS::ReturnCode_t error = reader_i->take_next_sample(dataA, info);
+
+	if (error == DDS::RETCODE_OK) {
+		if (info.valid_data) {
+			CString tmpLog;
+			tmpLog.Format(L"ÊÕµ½£ºDataA name:%s pos:%d length:%d", CString(dataA.name), dataA.pos, dataA.length);
+			_dlg->AppendMSG(tmpLog);
+		} 
+
+	}
+	else {
+		ACE_ERROR((LM_ERROR,
+			ACE_TEXT("ERROR: %N:%l: on_data_available() -")
+			ACE_TEXT(" take_next_sample failed!\n")));
+	}
 }
 
 void

@@ -25,10 +25,10 @@
 
 
 // TAO_IDL - Generated from
-// d:\softwaredevelopment\opendds\ace_wrappers\tao\tao_idl\be\be_codegen.cpp:635
+// be\be_codegen.cpp:635
 
-#ifndef _TAO_IDL_DATAAS_SQ64S2_CPP_
-#define _TAO_IDL_DATAAS_SQ64S2_CPP_
+#ifndef _TAO_IDL_DATAAS_GVSOLQ_CPP_
+#define _TAO_IDL_DATAAS_GVSOLQ_CPP_
 
 
 #include "DataAS.h"

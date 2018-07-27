@@ -1,6 +1,7 @@
 module TestA
 {
 	#pragma DCPS_DATA_TYPE "TestA::DataA"
+	#pragma DCPS_DATA_KEY "TestA::DataA pos"
 
 	struct DataA
 {

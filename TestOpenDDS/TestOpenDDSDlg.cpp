@@ -8,6 +8,8 @@
 #include "DataATypeSupportImpl.h"
 
 #include <ppltasks.h>
+#include <timeapi.h>
+
 using namespace concurrency;
 
 #define WMSG_LOG		WM_USER + 1
@@ -70,6 +72,8 @@ BOOL CTestOpenDDSDlg::OnInitDialog()
 	_editRightTopic.SetWindowText(L"test topic Right");
 	_editRightData.SetWindowText(L"data Right");
 
+
+
 	return TRUE;
 }
 
@@ -119,7 +123,8 @@ void CTestOpenDDSDlg::OnBtnJoinDomain()
 	task<void> taskStartPublisher([&]
 	{
 		char* paramBuf[] = { "-DCPSConfigFile", "rtps.ini" };
-		//	char* paramBuf[] = { "-DCPSInfoRepo", "file://D:\\Study\\openDDS\\bin\\simple.ior" };
+		//char* paramBuf[] = { "-DCPSConfigFile", "D:\\Study\\openDDS\\TestOpenDDS\\Release\\rtps.ini" };
+		//char* paramBuf[] = { "-DCPSInfoRepo", "file://D:\\Study\\\openDDS\\OpenDDS-DDS\\bin\\simple.ior" };
 		int paramCount = 2;
 
 		JoinDomain(paramCount, paramBuf);
@@ -211,7 +216,6 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 	task<void>([&, topicName]
 	{
 		CString log;
-		// 创建主题
 		CORBA::String_var type_name = _dataA_TS->get_type_name();
 		Topic_var dataA_leftTopic = _participant->create_topic(CStringA(topicName),
 			type_name,
@@ -238,11 +242,14 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 
 		DataWriterQos dataWriterQos;
 		dataA_leftTopicPublisher->get_default_datawriter_qos(dataWriterQos);
-		dataWriterQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
-		DDS::Duration_t livelinessTime = { 1, 0 };
-		dataWriterQos.liveliness.lease_duration = livelinessTime;
+// 		dataWriterQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
+// 		DDS::Duration_t livelinessTime = { 1, 0 };
+// 		dataWriterQos.liveliness.lease_duration = livelinessTime;
 		dataWriterQos.history.kind = KEEP_LAST_HISTORY_QOS;
 		dataWriterQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+		dataWriterQos.resource_limits.max_instances = 1;
+ 		dataWriterQos.resource_limits.max_samples = 1;
+		dataWriterQos.resource_limits.max_samples_per_instance = 1;
 
 		// 创建写数据工具
 		CDataWriterListenerImpl* dataWriterListener = new CDataWriterListenerImpl();
@@ -297,7 +304,6 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 				}
 			}
 
-
 			while (!_dataA_leftTopicNeedStop)
 			{
 				if (!_dataA_leftTopicHasNewData)
@@ -315,16 +321,19 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 				static int length = 10;
 				TestA::DataA dataA;
 				dataA.pos = 1;
-				dataA.length = length;
+				dataA.length = length++;
 				dataA.name = CStringA(_dataA_leftTopicData);
 
 				DDS::InstanceHandle_t handle = message_writer->register_instance(dataA);
 
-
+				CString tmpLog;
 				for (int i = 0; i < 2; ++i)
 				{
-					//	ReturnCode_t error = message_writer->write(dataA, DDS::HANDLE_NIL);
-					ReturnCode_t error = message_writer->write(dataA, handle);
+					tmpLog.Format(L"发布：DataA name:%s pos:%d length:%d", CString(dataA.name), dataA.pos, dataA.length);
+					AppendMSG(tmpLog);
+
+					ReturnCode_t error = message_writer->write(dataA, DDS::HANDLE_NIL);
+					//ReturnCode_t error = message_writer->write(dataA, handle);
 					dataA.pos += 10;
 					dataA.length += 100;
 
@@ -572,11 +581,14 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 
 		DataReaderQos dataReaderQos;
 		subscriber->get_default_datareader_qos(dataReaderQos);
-		dataReaderQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
+		/*dataReaderQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
 		DDS::Duration_t livelinessTime = { 1, 0 };
-		dataReaderQos.liveliness.lease_duration = livelinessTime;
+		dataReaderQos.liveliness.lease_duration = livelinessTime;*/
 		dataReaderQos.history.kind = KEEP_LAST_HISTORY_QOS;
 		dataReaderQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+  		dataReaderQos.resource_limits.max_instances = 1;
+  		dataReaderQos.resource_limits.max_samples = 1;
+		dataReaderQos.resource_limits.max_samples_per_instance = 1;
 
 		// 创建读监听器
 		CDataReaderListenerImpl* dataReaderListener = new CDataReaderListenerImpl();
@@ -610,6 +622,7 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 		{
 			ASSERT(0);
 		}
+
 
 		// 阻塞直至有主题发布
 		DDS::StatusCondition_var condition = reader->get_statuscondition();
