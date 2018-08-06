@@ -10,6 +10,8 @@
 #include <dds/DCPS/WaitSet.h>
 #include <dds/DCPS/StaticIncludes.h>
 #include "DataATypeSupportImpl.h"
+#include "afxwin.h"
+
 
 using namespace DDS;
 
@@ -52,9 +54,23 @@ private:
 	CButton		_btnRecvLeftTopic;
 	CButton		_btnRecvRightTopic;
 
+	CEdit		_editDataBTopicName;
+	CEdit		_editDataBData;
+	CButton		_btnPublishDataB;
+	CButton		_btnSubscribeDataBTopic;
+
 	DomainParticipantFactory_var	_dpf = nullptr;
 	DomainParticipant_var			_participant = nullptr;
+	Publisher_var					_publisher = nullptr;
+	Subscriber_var					_subscriber = nullptr;
+
 	TestA::DataATypeSupport_var		_dataA_TS = nullptr;
+
+	TestA::DataBTypeSupport_var		_dataB_TS = nullptr;
+	Topic_var						_dataBTopic = nullptr;
+	DDS::DataWriter_var				_dataBWriter = nullptr;
+	DDS::DataReader_var				_dataBReader = nullptr;
+
 	long							_dataA_leftTopicNeedStop = FALSE;
 	long							_dataA_leftTopicHasNewData = FALSE;
 	CString							_dataA_leftTopicData;
@@ -79,4 +95,9 @@ public:
 	afx_msg void OnBtnStopRightTopic();
 	afx_msg void OnBtnSubscribeLeftTopic();
 	afx_msg void OnBtnSubscribeRightTopic();
+
+	afx_msg void OnBtnPublishDataBTopic();
+	afx_msg void OnBtnSendDataBData();
+	afx_msg void OnBtnStopPublishDataBTopic();
+	afx_msg void OnBtnSubscribeDataBTopic();
 };

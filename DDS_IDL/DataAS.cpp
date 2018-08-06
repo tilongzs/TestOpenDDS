@@ -27,8 +27,8 @@
 // TAO_IDL - Generated from
 // be\be_codegen.cpp:635
 
-#ifndef _TAO_IDL_DATAAS_GVSOLQ_CPP_
-#define _TAO_IDL_DATAAS_GVSOLQ_CPP_
+#ifndef _TAO_IDL_DATAAS_D9IADN_CPP_
+#define _TAO_IDL_DATAAS_D9IADN_CPP_
 
 
 #include "DataAS.h"

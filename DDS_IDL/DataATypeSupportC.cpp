@@ -423,3 +423,391 @@ TestA::DataADataReader::marshal (TAO_OutputCDR & /* cdr */)
   return false;
 }
 
+// TAO_IDL - Generated from
+// be\be_visitor_interface\interface_cs.cpp:48
+TAO_BEGIN_VERSIONED_NAMESPACE_DECL
+
+// Traits specializations for TestA::DataBTypeSupport.
+
+TestA::DataBTypeSupport_ptr
+TAO::Objref_Traits<TestA::DataBTypeSupport>::duplicate (
+    TestA::DataBTypeSupport_ptr p)
+{
+  return TestA::DataBTypeSupport::_duplicate (p);
+}
+
+void
+TAO::Objref_Traits<TestA::DataBTypeSupport>::release (
+    TestA::DataBTypeSupport_ptr p)
+{
+  ::CORBA::release (p);
+}
+
+TestA::DataBTypeSupport_ptr
+TAO::Objref_Traits<TestA::DataBTypeSupport>::nil (void)
+{
+  return TestA::DataBTypeSupport::_nil ();
+}
+
+::CORBA::Boolean
+TAO::Objref_Traits<TestA::DataBTypeSupport>::marshal (
+    const TestA::DataBTypeSupport_ptr p,
+    TAO_OutputCDR & cdr)
+{
+  return ::CORBA::Object::marshal (p, cdr);
+}
+
+TAO_END_VERSIONED_NAMESPACE_DECL
+
+
+
+TestA::DataBTypeSupport::DataBTypeSupport (void)
+{}
+
+TestA::DataBTypeSupport::~DataBTypeSupport (void)
+{
+}
+
+TestA::DataBTypeSupport_ptr
+TestA::DataBTypeSupport::_narrow (
+    ::CORBA::Object_ptr _tao_objref)
+{
+  return DataBTypeSupport::_duplicate (
+      dynamic_cast<DataBTypeSupport_ptr> (_tao_objref));
+}
+
+TestA::DataBTypeSupport_ptr
+TestA::DataBTypeSupport::_unchecked_narrow (
+    ::CORBA::Object_ptr _tao_objref)
+{
+  return DataBTypeSupport::_duplicate (
+      dynamic_cast<DataBTypeSupport_ptr> (_tao_objref));
+}
+
+TestA::DataBTypeSupport_ptr
+TestA::DataBTypeSupport::_nil (void)
+{
+  return 0;
+}
+
+TestA::DataBTypeSupport_ptr
+TestA::DataBTypeSupport::_duplicate (DataBTypeSupport_ptr obj)
+{
+  if (! ::CORBA::is_nil (obj))
+    {
+      obj->_add_ref ();
+    }
+  return obj;
+}
+
+void
+TestA::DataBTypeSupport::_tao_release (DataBTypeSupport_ptr obj)
+{
+  ::CORBA::release (obj);
+}
+
+::CORBA::Boolean
+TestA::DataBTypeSupport::_is_a (const char *value)
+{
+  if (
+      ACE_OS::strcmp (
+          value,
+          "IDL:DDS/TypeSupport:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:OpenDDS/DCPS/TypeSupport:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:TestA/DataBTypeSupport:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:omg.org/CORBA/LocalObject:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:omg.org/CORBA/Object:1.0"
+        ) == 0
+    )
+    {
+      return true; // success using local knowledge
+    }
+  else
+    {
+      return false;
+    }
+}
+
+const char* TestA::DataBTypeSupport::_interface_repository_id (void) const
+{
+  return "IDL:TestA/DataBTypeSupport:1.0";
+}
+
+::CORBA::Boolean
+TestA::DataBTypeSupport::marshal (TAO_OutputCDR & /* cdr */)
+{
+  return false;
+}
+
+// TAO_IDL - Generated from
+// be\be_visitor_interface\interface_cs.cpp:48
+TAO_BEGIN_VERSIONED_NAMESPACE_DECL
+
+// Traits specializations for TestA::DataBDataWriter.
+
+TestA::DataBDataWriter_ptr
+TAO::Objref_Traits<TestA::DataBDataWriter>::duplicate (
+    TestA::DataBDataWriter_ptr p)
+{
+  return TestA::DataBDataWriter::_duplicate (p);
+}
+
+void
+TAO::Objref_Traits<TestA::DataBDataWriter>::release (
+    TestA::DataBDataWriter_ptr p)
+{
+  ::CORBA::release (p);
+}
+
+TestA::DataBDataWriter_ptr
+TAO::Objref_Traits<TestA::DataBDataWriter>::nil (void)
+{
+  return TestA::DataBDataWriter::_nil ();
+}
+
+::CORBA::Boolean
+TAO::Objref_Traits<TestA::DataBDataWriter>::marshal (
+    const TestA::DataBDataWriter_ptr p,
+    TAO_OutputCDR & cdr)
+{
+  return ::CORBA::Object::marshal (p, cdr);
+}
+
+TAO_END_VERSIONED_NAMESPACE_DECL
+
+
+
+TestA::DataBDataWriter::DataBDataWriter (void)
+{}
+
+TestA::DataBDataWriter::~DataBDataWriter (void)
+{
+}
+
+TestA::DataBDataWriter_ptr
+TestA::DataBDataWriter::_narrow (
+    ::CORBA::Object_ptr _tao_objref)
+{
+  return DataBDataWriter::_duplicate (
+      dynamic_cast<DataBDataWriter_ptr> (_tao_objref));
+}
+
+TestA::DataBDataWriter_ptr
+TestA::DataBDataWriter::_unchecked_narrow (
+    ::CORBA::Object_ptr _tao_objref)
+{
+  return DataBDataWriter::_duplicate (
+      dynamic_cast<DataBDataWriter_ptr> (_tao_objref));
+}
+
+TestA::DataBDataWriter_ptr
+TestA::DataBDataWriter::_nil (void)
+{
+  return 0;
+}
+
+TestA::DataBDataWriter_ptr
+TestA::DataBDataWriter::_duplicate (DataBDataWriter_ptr obj)
+{
+  if (! ::CORBA::is_nil (obj))
+    {
+      obj->_add_ref ();
+    }
+  return obj;
+}
+
+void
+TestA::DataBDataWriter::_tao_release (DataBDataWriter_ptr obj)
+{
+  ::CORBA::release (obj);
+}
+
+::CORBA::Boolean
+TestA::DataBDataWriter::_is_a (const char *value)
+{
+  if (
+      ACE_OS::strcmp (
+          value,
+          "IDL:DDS/Entity:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:DDS/DataWriter:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:TestA/DataBDataWriter:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:omg.org/CORBA/LocalObject:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:omg.org/CORBA/Object:1.0"
+        ) == 0
+    )
+    {
+      return true; // success using local knowledge
+    }
+  else
+    {
+      return false;
+    }
+}
+
+const char* TestA::DataBDataWriter::_interface_repository_id (void) const
+{
+  return "IDL:TestA/DataBDataWriter:1.0";
+}
+
+::CORBA::Boolean
+TestA::DataBDataWriter::marshal (TAO_OutputCDR & /* cdr */)
+{
+  return false;
+}
+
+// TAO_IDL - Generated from
+// be\be_visitor_interface\interface_cs.cpp:48
+TAO_BEGIN_VERSIONED_NAMESPACE_DECL
+
+// Traits specializations for TestA::DataBDataReader.
+
+TestA::DataBDataReader_ptr
+TAO::Objref_Traits<TestA::DataBDataReader>::duplicate (
+    TestA::DataBDataReader_ptr p)
+{
+  return TestA::DataBDataReader::_duplicate (p);
+}
+
+void
+TAO::Objref_Traits<TestA::DataBDataReader>::release (
+    TestA::DataBDataReader_ptr p)
+{
+  ::CORBA::release (p);
+}
+
+TestA::DataBDataReader_ptr
+TAO::Objref_Traits<TestA::DataBDataReader>::nil (void)
+{
+  return TestA::DataBDataReader::_nil ();
+}
+
+::CORBA::Boolean
+TAO::Objref_Traits<TestA::DataBDataReader>::marshal (
+    const TestA::DataBDataReader_ptr p,
+    TAO_OutputCDR & cdr)
+{
+  return ::CORBA::Object::marshal (p, cdr);
+}
+
+TAO_END_VERSIONED_NAMESPACE_DECL
+
+
+
+TestA::DataBDataReader::DataBDataReader (void)
+{}
+
+TestA::DataBDataReader::~DataBDataReader (void)
+{
+}
+
+TestA::DataBDataReader_ptr
+TestA::DataBDataReader::_narrow (
+    ::CORBA::Object_ptr _tao_objref)
+{
+  return DataBDataReader::_duplicate (
+      dynamic_cast<DataBDataReader_ptr> (_tao_objref));
+}
+
+TestA::DataBDataReader_ptr
+TestA::DataBDataReader::_unchecked_narrow (
+    ::CORBA::Object_ptr _tao_objref)
+{
+  return DataBDataReader::_duplicate (
+      dynamic_cast<DataBDataReader_ptr> (_tao_objref));
+}
+
+TestA::DataBDataReader_ptr
+TestA::DataBDataReader::_nil (void)
+{
+  return 0;
+}
+
+TestA::DataBDataReader_ptr
+TestA::DataBDataReader::_duplicate (DataBDataReader_ptr obj)
+{
+  if (! ::CORBA::is_nil (obj))
+    {
+      obj->_add_ref ();
+    }
+  return obj;
+}
+
+void
+TestA::DataBDataReader::_tao_release (DataBDataReader_ptr obj)
+{
+  ::CORBA::release (obj);
+}
+
+::CORBA::Boolean
+TestA::DataBDataReader::_is_a (const char *value)
+{
+  if (
+      ACE_OS::strcmp (
+          value,
+          "IDL:DDS/Entity:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:DDS/DataReader:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:OpenDDS/DCPS/DataReaderEx:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:TestA/DataBDataReader:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:omg.org/CORBA/LocalObject:1.0"
+        ) == 0 ||
+      ACE_OS::strcmp (
+          value,
+          "IDL:omg.org/CORBA/Object:1.0"
+        ) == 0
+    )
+    {
+      return true; // success using local knowledge
+    }
+  else
+    {
+      return false;
+    }
+}
+
+const char* TestA::DataBDataReader::_interface_repository_id (void) const
+{
+  return "IDL:TestA/DataBDataReader:1.0";
+}
+
+::CORBA::Boolean
+TestA::DataBDataReader::marshal (TAO_OutputCDR & /* cdr */)
+{
+  return false;
+}
+

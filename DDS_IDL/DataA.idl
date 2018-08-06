@@ -1,12 +1,26 @@
+#include <tao/CharSeq.pidl>
+
 module TestA
 {
 	#pragma DCPS_DATA_TYPE "TestA::DataA"
 	#pragma DCPS_DATA_KEY "TestA::DataA pos"
-
 	struct DataA
-{
-	long	pos;
-	string	name;
-	long	length;
-};
+	{
+		long	pos;
+		string	name;
+		long	length;
+		CORBA::CharSeq	dataSeq;
+	};
+	
+	
+	#pragma DCPS_DATA_TYPE "TestA::DataB"
+	#pragma DCPS_DATA_KEY "TestA::DataB id"
+	struct DataB
+	{
+		long	id;
+		string	name;
+		double	latitude;
+		double	longitude;
+		double	altitude;
+	};
 };

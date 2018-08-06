@@ -26,8 +26,8 @@
 // TAO_IDL - Generated from
 // be\be_codegen.cpp:149
 
-#ifndef _TAO_IDL_DATAAC_CFDEH8_H_
-#define _TAO_IDL_DATAAC_CFDEH8_H_
+#ifndef _TAO_IDL_DATAAC_ZFZEKB_H_
+#define _TAO_IDL_DATAAC_ZFZEKB_H_
 
 #include /**/ "ace/pre.h"
 
@@ -52,6 +52,8 @@
 #include "tao/UB_String_Arguments.h"
 #include /**/ "tao/Version.h"
 #include /**/ "tao/Versioned_Namespace.h"
+
+#include "tao/CharSeqC.h"
 
 #if TAO_MAJOR_VERSION != 2 || TAO_MINOR_VERSION != 5 || TAO_MICRO_VERSION != 0
 #error This file should be regenerated with TAO_IDL
@@ -96,6 +98,44 @@ namespace TestA
     ::CORBA::Long pos;
     ::TAO::String_Manager name;
     ::CORBA::Long length;
+    CORBA::CharSeq dataSeq;
+  };
+
+  // TAO_IDL - Generated from
+  // be\be_type.cpp:258
+
+  struct DataB;
+
+  typedef
+    ::TAO_Var_Var_T<
+        DataB
+      >
+    DataB_var;
+
+  typedef
+    ::TAO_Out_T<
+        DataB
+      >
+    DataB_out;
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_structure\structure_ch.cpp:48
+
+  struct  DataB
+  {
+
+    // TAO_IDL - Generated from
+    // be\be_type.cpp:304
+
+    
+    typedef DataB_var _var_type;
+    typedef DataB_out _out_type;
+    
+    ::CORBA::Long id;
+    ::TAO::String_Manager name;
+    ::CORBA::Double latitude;
+    ::CORBA::Double longitude;
+    ::CORBA::Double altitude;
   };
 
 // TAO_IDL - Generated from
@@ -121,6 +161,19 @@ namespace TAO
     : public
         Var_Size_Arg_Traits_T<
             ::TestA::DataA,
+            TAO::Any_Insert_Policy_Noop
+          >
+  {
+  };
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_arg_traits.cpp:945
+
+  template<>
+  class Arg_Traits< ::TestA::DataB>
+    : public
+        Var_Size_Arg_Traits_T<
+            ::TestA::DataB,
             TAO::Any_Insert_Policy_Noop
           >
   {
@@ -152,6 +205,19 @@ TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
  ::CORBA::Boolean operator<< (TAO_OutputCDR &, const TestA::DataA &);
  ::CORBA::Boolean operator>> (TAO_InputCDR &, TestA::DataA &);
+
+TAO_END_VERSIONED_NAMESPACE_DECL
+
+
+
+// TAO_IDL - Generated from
+// be\be_visitor_structure\cdr_op_ch.cpp:43
+
+
+TAO_BEGIN_VERSIONED_NAMESPACE_DECL
+
+ ::CORBA::Boolean operator<< (TAO_OutputCDR &, const TestA::DataB &);
+ ::CORBA::Boolean operator>> (TAO_InputCDR &, TestA::DataB &);
 
 TAO_END_VERSIONED_NAMESPACE_DECL
 

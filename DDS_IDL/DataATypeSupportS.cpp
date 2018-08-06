@@ -27,8 +27,8 @@
 // TAO_IDL - Generated from
 // be\be_codegen.cpp:635
 
-#ifndef _TAO_IDL_DATAATYPESUPPORTS_BA6N8E_CPP_
-#define _TAO_IDL_DATAATYPESUPPORTS_BA6N8E_CPP_
+#ifndef _TAO_IDL_DATAATYPESUPPORTS_MVGGPN_CPP_
+#define _TAO_IDL_DATAATYPESUPPORTS_MVGGPN_CPP_
 
 
 #include "DataATypeSupportS.h"

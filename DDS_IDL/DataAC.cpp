@@ -46,7 +46,8 @@ TAO_BEGIN_VERSIONED_NAMESPACE_DECL
   return
     (strm << _tao_aggregate.pos) &&
     (strm << _tao_aggregate.name.in ()) &&
-    (strm << _tao_aggregate.length);
+    (strm << _tao_aggregate.length) &&
+    (strm << _tao_aggregate.dataSeq);
 }
 
 ::CORBA::Boolean operator>> (
@@ -56,7 +57,41 @@ TAO_BEGIN_VERSIONED_NAMESPACE_DECL
   return
     (strm >> _tao_aggregate.pos) &&
     (strm >> _tao_aggregate.name.out ()) &&
-    (strm >> _tao_aggregate.length);
+    (strm >> _tao_aggregate.length) &&
+    (strm >> _tao_aggregate.dataSeq);
+}
+
+TAO_END_VERSIONED_NAMESPACE_DECL
+
+
+
+// TAO_IDL - Generated from
+// be\be_visitor_structure\cdr_op_cs.cpp:49
+
+TAO_BEGIN_VERSIONED_NAMESPACE_DECL
+
+::CORBA::Boolean operator<< (
+    TAO_OutputCDR &strm,
+    const TestA::DataB &_tao_aggregate)
+{
+  return
+    (strm << _tao_aggregate.id) &&
+    (strm << _tao_aggregate.name.in ()) &&
+    (strm << _tao_aggregate.latitude) &&
+    (strm << _tao_aggregate.longitude) &&
+    (strm << _tao_aggregate.altitude);
+}
+
+::CORBA::Boolean operator>> (
+    TAO_InputCDR &strm,
+    TestA::DataB &_tao_aggregate)
+{
+  return
+    (strm >> _tao_aggregate.id) &&
+    (strm >> _tao_aggregate.name.out ()) &&
+    (strm >> _tao_aggregate.latitude) &&
+    (strm >> _tao_aggregate.longitude) &&
+    (strm >> _tao_aggregate.altitude);
 }
 
 TAO_END_VERSIONED_NAMESPACE_DECL

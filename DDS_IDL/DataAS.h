@@ -26,12 +26,13 @@
 // TAO_IDL - Generated from
 // be\be_codegen.cpp:451
 
-#ifndef _TAO_IDL_DATAAS_GVSOLQ_H_
-#define _TAO_IDL_DATAAS_GVSOLQ_H_
+#ifndef _TAO_IDL_DATAAS_BG72FU_H_
+#define _TAO_IDL_DATAAS_BG72FU_H_
 
 #include /**/ "ace/pre.h"
 
 #include "DataAC.h"
+#include "tao/CharSeqS.h"
 #include "tao/PortableServer/Basic_SArguments.h"
 #include "tao/PortableServer/Special_Basic_SArguments.h"
 #include "tao/PortableServer/Fixed_Size_SArgument_T.h"
@@ -61,6 +62,19 @@ namespace TAO
     : public
         Var_Size_SArg_Traits_T<
             ::TestA::DataA,
+            TAO::Any_Insert_Policy_Noop
+          >
+  {
+  };
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_arg_traits.cpp:945
+
+  template<>
+  class SArg_Traits< ::TestA::DataB>
+    : public
+        Var_Size_SArg_Traits_T<
+            ::TestA::DataB,
             TAO::Any_Insert_Policy_Noop
           >
   {

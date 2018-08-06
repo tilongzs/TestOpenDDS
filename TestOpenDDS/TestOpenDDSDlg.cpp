@@ -2,6 +2,7 @@
 #include "TestOpenDDS.h"
 #include "TestOpenDDSDlg.h"
 #include "afxdialogex.h"
+#include "Common.h"
 
 #include "DataReaderListenerImpl.h"
 #include "DataWriterListenerImpl.h"
@@ -36,6 +37,10 @@ void CTestOpenDDSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BUTTON_START_RIGHT_TOPIC, _btnStartRightTopic);
 	DDX_Control(pDX, IDC_BUTTON_RECV_LEFT_TOPIC, _btnRecvLeftTopic);
 	DDX_Control(pDX, IDC_BUTTON_RECV_RIGHT_TOPIC, _btnRecvRightTopic);
+	DDX_Control(pDX, IDC_EDIT6, _editDataBTopicName);
+	DDX_Control(pDX, IDC_EDIT7, _editDataBData);
+	DDX_Control(pDX, IDC_BUTTON_START_LEFT_TOPIC2, _btnPublishDataB);
+	DDX_Control(pDX, IDC_BUTTON_RECV_LEFT_TOPIC3, _btnSubscribeDataBTopic);
 }
 
 BEGIN_MESSAGE_MAP(CTestOpenDDSDlg, CDialogEx)
@@ -53,6 +58,10 @@ BEGIN_MESSAGE_MAP(CTestOpenDDSDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_START_RIGHT_TOPIC, &CTestOpenDDSDlg::OnBtnPublishRightTopic)
 	ON_BN_CLICKED(IDC_BUTTON_RECV_LEFT_TOPIC, &CTestOpenDDSDlg::OnBtnSubscribeLeftTopic)
 	ON_BN_CLICKED(IDC_BUTTON_RECV_RIGHT_TOPIC, &CTestOpenDDSDlg::OnBtnSubscribeRightTopic)
+	ON_BN_CLICKED(IDC_BUTTON_START_LEFT_TOPIC2, &CTestOpenDDSDlg::OnBtnPublishDataBTopic)
+	ON_BN_CLICKED(IDC_BUTTON_SEND_LEFT_TOPIC2, &CTestOpenDDSDlg::OnBtnSendDataBData)
+	ON_BN_CLICKED(IDC_BUTTON_STOP_LEFT_TOPIC2, &CTestOpenDDSDlg::OnBtnStopPublishDataBTopic)
+	ON_BN_CLICKED(IDC_BUTTON_RECV_LEFT_TOPIC3, &CTestOpenDDSDlg::OnBtnSubscribeDataBTopic)
 END_MESSAGE_MAP()
 
 BOOL CTestOpenDDSDlg::OnInitDialog()
@@ -71,7 +80,8 @@ BOOL CTestOpenDDSDlg::OnInitDialog()
 	_editLeftData.SetWindowText(L"data Left");
 	_editRightTopic.SetWindowText(L"test topic Right");
 	_editRightData.SetWindowText(L"data Right");
-
+	_editDataBTopicName.SetWindowText(L"test dataB topic");
+	_editDataBData.SetWindowText(L"test dataB data");
 
 
 	return TRUE;
@@ -155,11 +165,41 @@ int CTestOpenDDSDlg::JoinDomain(int argc, char* argv[])
 			return 0;
 		}
 
+		// 创建发布者
+		_publisher = _participant->create_publisher(PUBLISHER_QOS_DEFAULT,
+			0,
+			OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
+		if (!_publisher)
+		{
+			AppendMSG(L"创建发布者失败");
+			return 0;
+		}
+
+		// 创建订阅者
+		_subscriber =
+			_participant->create_subscriber(SUBSCRIBER_QOS_DEFAULT,
+				0,
+				OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
+		if (!_subscriber)
+		{
+			AppendMSG(L"创建订阅者失败");
+			return 0;
+		}
+
 		// 注册类型
 		_dataA_TS = new TestA::DataATypeSupportImpl;
 		if (_dataA_TS->register_type(_participant, "") != DDS::RETCODE_OK)
 		{
-			AppendMSG(L"注册类型失败");
+			AppendMSG(L"注册DataA类型失败");
+			return 0;
+		}
+
+		_dataB_TS = new TestA::DataBTypeSupportImpl;
+		if (_dataB_TS->register_type(_participant, "") != DDS::RETCODE_OK)
+		{
+			AppendMSG(L"注册DataB类型失败");
 			return 0;
 		}
 
@@ -229,26 +269,15 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 			return;
 		}
 
-		// 创建发布者
-		Publisher_var dataA_leftTopicPublisher = _participant->create_publisher(PUBLISHER_QOS_DEFAULT,
-			0,
-			OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-
-		if (!dataA_leftTopicPublisher)
-		{
-			AppendMSG(L"创建发布者失败");
-			return;
-		}
-
 		DataWriterQos dataWriterQos;
-		dataA_leftTopicPublisher->get_default_datawriter_qos(dataWriterQos);
+		_publisher->get_default_datawriter_qos(dataWriterQos);
 // 		dataWriterQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
 // 		DDS::Duration_t livelinessTime = { 1, 0 };
 // 		dataWriterQos.liveliness.lease_duration = livelinessTime;
 		dataWriterQos.history.kind = KEEP_LAST_HISTORY_QOS;
 		dataWriterQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-		dataWriterQos.resource_limits.max_instances = 1;
- 		dataWriterQos.resource_limits.max_samples = 1;
+// 		dataWriterQos.resource_limits.max_instances = 1;
+//  	dataWriterQos.resource_limits.max_samples = 1;
 		dataWriterQos.resource_limits.max_samples_per_instance = 1;
 
 		// 创建写数据工具
@@ -256,7 +285,7 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 		dataWriterListener->Init(this);
 
 		DDS::DataWriter_var writer =
-			dataA_leftTopicPublisher->create_datawriter(dataA_leftTopic,
+			_publisher->create_datawriter(dataA_leftTopic,
 				dataWriterQos, // DATAWRITER_QOS_DEFAULT
 				dataWriterListener,
 				OpenDDS::DCPS::DEFAULT_STATUS_MASK);
@@ -317,14 +346,21 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 					ASSERT(0);
 				}
 
-				// 写数据
 				static int length = 10;
+				char testBuf[5] = { 0 };// 测试包含\0的字符串数组
+				testBuf[0] = '1';
+				testBuf[1] = '2';
+				testBuf[2] = '\0';
+				testBuf[3] = '4';
+				testBuf[4] = '5';
+
 				TestA::DataA dataA;
 				dataA.pos = 1;
 				dataA.length = length++;
 				dataA.name = CStringA(_dataA_leftTopicData);
+				dataA.dataSeq.replace(5, 5, testBuf);
 
-				DDS::InstanceHandle_t handle = message_writer->register_instance(dataA);
+				//DDS::InstanceHandle_t handle = message_writer->register_instance(dataA);
 
 				CString tmpLog;
 				for (int i = 0; i < 2; ++i)
@@ -339,9 +375,7 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 
 					if (error != DDS::RETCODE_OK)
 					{
-						ACE_ERROR((LM_ERROR,
-							ACE_TEXT("ERROR: %N:%l: main() -")
-							ACE_TEXT(" write returned %d!\n"), error));
+						ASSERT(0);
 					}
 				}
 
@@ -358,8 +392,7 @@ void CTestOpenDDSDlg::OnBtnPublishLeftTopic()
 
 		// 清理资源
 		ws->detach_condition(condition);
-		dataA_leftTopicPublisher->delete_datawriter(writer);
-		_participant->delete_publisher(dataA_leftTopicPublisher);
+		_publisher->delete_datawriter(writer);
 		_participant->delete_topic(dataA_leftTopic);
 
 		log.Format(L"主题：%s已停止", topicName);
@@ -494,17 +527,19 @@ void CTestOpenDDSDlg::OnBtnPublishRightTopic()
 				dataA.length = 10;
 				dataA.name = CStringA(_dataA_rightTopicData);
 
+				CString tmpLog;
 				for (int i = 0; i < 2; ++i)
 				{
+					tmpLog.Format(L"发布：DataA name:%s pos:%d length:%d", CString(dataA.name), dataA.pos, dataA.length);
+					AppendMSG(tmpLog);
+
 					DDS::ReturnCode_t error = message_writer->write(dataA, DDS::HANDLE_NIL);
 					++dataA.pos;
 					++dataA.length;
 
 					if (error != DDS::RETCODE_OK)
 					{
-						ACE_ERROR((LM_ERROR,
-							ACE_TEXT("ERROR: %N:%l: main() -")
-							ACE_TEXT(" write returned %d!\n"), error));
+						ASSERT(0);
 					}
 				}
 
@@ -567,27 +602,15 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 			return;
 		}
 
-		// 创建订阅者
-		DDS::Subscriber_var subscriber =
-			_participant->create_subscriber(SUBSCRIBER_QOS_DEFAULT,
-				0,
-				OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-
-		if (!subscriber)
-		{
-			AppendMSG(L"创建订阅者失败");
-			return;
-		}
-
 		DataReaderQos dataReaderQos;
-		subscriber->get_default_datareader_qos(dataReaderQos);
-		/*dataReaderQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
-		DDS::Duration_t livelinessTime = { 1, 0 };
-		dataReaderQos.liveliness.lease_duration = livelinessTime;*/
+		_subscriber->get_default_datareader_qos(dataReaderQos);
+// 		dataReaderQos.liveliness.kind = AUTOMATIC_LIVELINESS_QOS;
+// 		DDS::Duration_t livelinessTime = { 1, 0 };
+// 		dataReaderQos.liveliness.lease_duration = livelinessTime;
 		dataReaderQos.history.kind = KEEP_LAST_HISTORY_QOS;
 		dataReaderQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-  		dataReaderQos.resource_limits.max_instances = 1;
-  		dataReaderQos.resource_limits.max_samples = 1;
+//   	dataReaderQos.resource_limits.max_instances = 1;
+//   	dataReaderQos.resource_limits.max_samples = 1;
 		dataReaderQos.resource_limits.max_samples_per_instance = 1;
 
 		// 创建读监听器
@@ -606,7 +629,7 @@ void CTestOpenDDSDlg::OnBtnSubscribeLeftTopic()
 				StringSeq());
 
 		//DDS::DataReader_var reader = subscriber->create_datareader(topic, // 不带过滤条件的订阅
-		DDS::DataReader_var reader = subscriber->create_datareader(cft,
+		DDS::DataReader_var reader = _subscriber->create_datareader(cft,
 			dataReaderQos,// DATAREADER_QOS_DEFAULT
 			listener,
 			OpenDDS::DCPS::DEFAULT_STATUS_MASK);
@@ -755,3 +778,115 @@ void CTestOpenDDSDlg::OnBtnSubscribeRightTopic()
 	});
 }
 
+void CTestOpenDDSDlg::OnBtnPublishDataBTopic()
+{
+	CString topicName;
+	_editDataBTopicName.GetWindowText(topicName);
+	_editDataBTopicName.EnableWindow(FALSE);
+	_btnPublishDataB.EnableWindow(FALSE);
+
+	task<void>([&, topicName]
+	{
+		CString log;
+		CORBA::String_var type_name = _dataB_TS->get_type_name();
+		_dataBTopic = _participant->create_topic(CStringA(topicName),
+			type_name,
+			TOPIC_QOS_DEFAULT,
+			0,
+			OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
+		if (!_dataBTopic)
+		{
+			AppendMSG(L"创建主题失败");
+			return;
+		}
+
+		DataWriterQos dataWriterQos;
+		_publisher->get_default_datawriter_qos(dataWriterQos);
+		dataWriterQos.history.kind = KEEP_LAST_HISTORY_QOS;
+		dataWriterQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+		dataWriterQos.resource_limits.max_samples_per_instance = 1;
+
+		_dataBWriter =
+			_publisher->create_datawriter(_dataBTopic,
+				dataWriterQos, // DATAWRITER_QOS_DEFAULT
+				nullptr,
+				OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
+		if (!_dataBWriter)
+		{
+			AppendMSG(L"创建写数据工具失败");
+			return;
+		}
+	});
+}
+
+void CTestOpenDDSDlg::OnBtnSendDataBData()
+{
+	CString textData;
+	_editDataBData.GetWindowText(textData);
+
+	TestA::DataB dataB;
+	dataB.id = 1;
+	dataB.longitude = 10.321;
+	dataB.latitude = 123.32;
+	dataB.altitude = 3.32;
+	dataB.name = "DataB name";
+
+	TestA::DataBDataWriter_var writer = TestA::DataBDataWriter::_narrow(_dataBWriter);
+	ReturnCode_t error = writer->write(dataB, DDS::HANDLE_NIL);
+	if (error != DDS::RETCODE_OK)
+	{
+		AppendMSG(L"SendDataBData失败");
+	}
+	else
+	{
+		CString strLog;
+		strLog.Format(L"发布：%s", textData);
+		AppendMSG(strLog);
+	}
+}
+
+void CTestOpenDDSDlg::OnBtnStopPublishDataBTopic()
+{
+	_publisher->delete_datawriter(_dataBWriter);
+	_participant->delete_topic(_dataBTopic);
+	_editDataBTopicName.EnableWindow(TRUE);
+	_btnPublishDataB.EnableWindow(TRUE);
+}
+
+void CTestOpenDDSDlg::OnBtnSubscribeDataBTopic()
+{
+	_btnSubscribeDataBTopic.EnableWindow(FALSE);
+
+	DataReaderQos dataReaderQos;
+	_subscriber->get_default_datareader_qos(dataReaderQos);
+	dataReaderQos.history.kind = KEEP_LAST_HISTORY_QOS;
+	dataReaderQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+	dataReaderQos.resource_limits.max_samples_per_instance = 1;
+
+	// 创建读监听器
+	CDataReaderListenerImpl* dataReaderListener = new CDataReaderListenerImpl();
+	dataReaderListener->Init(this);
+	DDS::DataReaderListener_var listener(dataReaderListener);
+
+	static int filterIndex = 100;
+	CStringA filterName;
+	filterName.Format("filter%d", filterIndex++);
+	DDS::ContentFilteredTopic_var cft =
+		_participant->create_contentfilteredtopic(filterName,
+			_dataBTopic,
+			"id>0",
+			StringSeq());
+
+	_dataBReader = _subscriber->create_datareader(cft,
+		dataReaderQos,// DATAREADER_QOS_DEFAULT
+		listener,
+		OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
+	if (!_dataBWriter)
+	{
+		AppendMSG(L"创建读监听器失败");
+		return;
+	}
+}

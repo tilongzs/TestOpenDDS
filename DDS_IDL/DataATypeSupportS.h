@@ -26,8 +26,8 @@
 // TAO_IDL - Generated from
 // be\be_codegen.cpp:451
 
-#ifndef _TAO_IDL_DATAATYPESUPPORTS_BA6N8E_H_
-#define _TAO_IDL_DATAATYPESUPPORTS_BA6N8E_H_
+#ifndef _TAO_IDL_DATAATYPESUPPORTS_MVGGPN_H_
+#define _TAO_IDL_DATAATYPESUPPORTS_MVGGPN_H_
 
 #include /**/ "ace/pre.h"
 
@@ -62,6 +62,18 @@ namespace TAO
 TAO_END_VERSIONED_NAMESPACE_DECL
 
 
+
+// TAO_IDL - Generated from
+// be\be_visitor_module\module_sh.cpp:35
+
+namespace POA_TestA
+{
+  
+
+// TAO_IDL - Generated from
+// be\be_visitor_module\module_sh.cpp:66
+
+} // module TestA
 
 // TAO_IDL - Generated from
 // be\be_visitor_module\module_sh.cpp:35

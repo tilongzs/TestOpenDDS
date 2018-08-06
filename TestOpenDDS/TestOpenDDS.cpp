@@ -32,7 +32,6 @@ BOOL CTestOpenDDSApp::InitInstance()
 	SetCurrentDirectory(workDirectory);
 	SetDllDirectory(workDirectory);
 
-
 	AfxEnableControlContainer();
 
 	CShellManager *pShellManager = new CShellManager;

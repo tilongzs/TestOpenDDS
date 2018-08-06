@@ -26,8 +26,8 @@
 // TAO_IDL - Generated from
 // be\be_codegen.cpp:149
 
-#ifndef _TAO_IDL_DATAATYPESUPPORTC_LTKGR5_H_
-#define _TAO_IDL_DATAATYPESUPPORTC_LTKGR5_H_
+#ifndef _TAO_IDL_DATAATYPESUPPORTC_IFVURN_H_
+#define _TAO_IDL_DATAATYPESUPPORTC_IFVURN_H_
 
 #include /**/ "ace/pre.h"
 
@@ -424,6 +424,358 @@ namespace TestA
 } // module TestA
 
 // TAO_IDL - Generated from
+// be\be_visitor_module\module_ch.cpp:35
+
+namespace TestA
+{
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_sequence\sequence_ch.cpp:99
+
+  typedef ::TAO::DCPS::ZeroCopyDataSeq< TestA::DataB, DCPS_ZERO_COPY_SEQ_DEFAULT_SIZE> DataBSeq;
+  
+
+  // TAO_IDL - Generated from
+  // be\be_interface.cpp:748
+
+#if !defined (_TESTA_DATABTYPESUPPORT__VAR_OUT_CH_)
+#define _TESTA_DATABTYPESUPPORT__VAR_OUT_CH_
+
+  class DataBTypeSupport;
+  typedef DataBTypeSupport *DataBTypeSupport_ptr;
+  typedef TAO_Objref_Var_T<DataBTypeSupport> DataBTypeSupport_var;
+  typedef TAO_Objref_Out_T<DataBTypeSupport> DataBTypeSupport_out;
+  
+
+#endif /* end #if !defined */
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_interface\interface_ch.cpp:40
+
+  class  DataBTypeSupport
+    : public virtual ::OpenDDS::DCPS::TypeSupport
+  
+  {
+  public:
+
+    // TAO_IDL - Generated from
+    // be\be_type.cpp:304
+
+    typedef DataBTypeSupport_ptr _ptr_type;
+    typedef DataBTypeSupport_var _var_type;
+    typedef DataBTypeSupport_out _out_type;
+
+    // The static operations.
+    static DataBTypeSupport_ptr _duplicate (DataBTypeSupport_ptr obj);
+
+    static void _tao_release (DataBTypeSupport_ptr obj);
+
+    static DataBTypeSupport_ptr _narrow (::CORBA::Object_ptr obj);
+    static DataBTypeSupport_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
+    static DataBTypeSupport_ptr _nil (void);
+
+    // TAO_IDL - Generated from
+    // be\be_visitor_interface\interface_ch.cpp:137
+
+    virtual ::CORBA::Boolean _is_a (const char *type_id);
+    virtual const char* _interface_repository_id (void) const;
+    virtual ::CORBA::Boolean marshal (TAO_OutputCDR &cdr);
+  
+  protected:
+    // Abstract or local interface only.
+    DataBTypeSupport (void);
+
+    
+
+    virtual ~DataBTypeSupport (void);
+  
+  private:
+    // Private and unimplemented for concrete interfaces.
+    DataBTypeSupport (const DataBTypeSupport &);
+
+    void operator= (const DataBTypeSupport &);
+  };
+
+  // TAO_IDL - Generated from
+  // be\be_interface.cpp:748
+
+#if !defined (_TESTA_DATABDATAWRITER__VAR_OUT_CH_)
+#define _TESTA_DATABDATAWRITER__VAR_OUT_CH_
+
+  class DataBDataWriter;
+  typedef DataBDataWriter *DataBDataWriter_ptr;
+  typedef TAO_Objref_Var_T<DataBDataWriter> DataBDataWriter_var;
+  typedef TAO_Objref_Out_T<DataBDataWriter> DataBDataWriter_out;
+  
+
+#endif /* end #if !defined */
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_interface\interface_ch.cpp:40
+
+  class  DataBDataWriter
+    : public virtual ::DDS::DataWriter
+  
+  {
+  public:
+
+    // TAO_IDL - Generated from
+    // be\be_type.cpp:304
+
+    typedef DataBDataWriter_ptr _ptr_type;
+    typedef DataBDataWriter_var _var_type;
+    typedef DataBDataWriter_out _out_type;
+
+    // The static operations.
+    static DataBDataWriter_ptr _duplicate (DataBDataWriter_ptr obj);
+
+    static void _tao_release (DataBDataWriter_ptr obj);
+
+    static DataBDataWriter_ptr _narrow (::CORBA::Object_ptr obj);
+    static DataBDataWriter_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
+    static DataBDataWriter_ptr _nil (void);
+
+    virtual ::DDS::InstanceHandle_t register_instance (
+      const ::TestA::DataB & instance) = 0;
+
+    virtual ::DDS::InstanceHandle_t register_instance_w_timestamp (
+      const ::TestA::DataB & instance,
+      const ::DDS::Time_t & timestamp) = 0;
+
+    virtual ::DDS::ReturnCode_t unregister_instance (
+      const ::TestA::DataB & instance,
+      ::DDS::InstanceHandle_t handle) = 0;
+
+    virtual ::DDS::ReturnCode_t unregister_instance_w_timestamp (
+      const ::TestA::DataB & instance,
+      ::DDS::InstanceHandle_t handle,
+      const ::DDS::Time_t & timestamp) = 0;
+
+    virtual ::DDS::ReturnCode_t write (
+      const ::TestA::DataB & instance_data,
+      ::DDS::InstanceHandle_t handle) = 0;
+
+    virtual ::DDS::ReturnCode_t write_w_timestamp (
+      const ::TestA::DataB & instance_data,
+      ::DDS::InstanceHandle_t handle,
+      const ::DDS::Time_t & source_timestamp) = 0;
+
+    virtual ::DDS::ReturnCode_t dispose (
+      const ::TestA::DataB & instance_data,
+      ::DDS::InstanceHandle_t instance_handle) = 0;
+
+    virtual ::DDS::ReturnCode_t dispose_w_timestamp (
+      const ::TestA::DataB & instance_data,
+      ::DDS::InstanceHandle_t instance_handle,
+      const ::DDS::Time_t & source_timestamp) = 0;
+
+    virtual ::DDS::ReturnCode_t get_key_value (
+      ::TestA::DataB & key_holder,
+      ::DDS::InstanceHandle_t handle) = 0;
+
+    virtual ::DDS::InstanceHandle_t lookup_instance (
+      const ::TestA::DataB & instance_data) = 0;
+
+    // TAO_IDL - Generated from
+    // be\be_visitor_interface\interface_ch.cpp:137
+
+    virtual ::CORBA::Boolean _is_a (const char *type_id);
+    virtual const char* _interface_repository_id (void) const;
+    virtual ::CORBA::Boolean marshal (TAO_OutputCDR &cdr);
+  
+  protected:
+    // Abstract or local interface only.
+    DataBDataWriter (void);
+
+    
+
+    virtual ~DataBDataWriter (void);
+  
+  private:
+    // Private and unimplemented for concrete interfaces.
+    DataBDataWriter (const DataBDataWriter &);
+
+    void operator= (const DataBDataWriter &);
+  };
+
+  // TAO_IDL - Generated from
+  // be\be_interface.cpp:748
+
+#if !defined (_TESTA_DATABDATAREADER__VAR_OUT_CH_)
+#define _TESTA_DATABDATAREADER__VAR_OUT_CH_
+
+  class DataBDataReader;
+  typedef DataBDataReader *DataBDataReader_ptr;
+  typedef TAO_Objref_Var_T<DataBDataReader> DataBDataReader_var;
+  typedef TAO_Objref_Out_T<DataBDataReader> DataBDataReader_out;
+  
+
+#endif /* end #if !defined */
+
+  // TAO_IDL - Generated from
+  // be\be_visitor_interface\interface_ch.cpp:40
+
+  class  DataBDataReader
+    : public virtual ::OpenDDS::DCPS::DataReaderEx
+  
+  {
+  public:
+
+    // TAO_IDL - Generated from
+    // be\be_type.cpp:304
+
+    typedef DataBDataReader_ptr _ptr_type;
+    typedef DataBDataReader_var _var_type;
+    typedef DataBDataReader_out _out_type;
+
+    // The static operations.
+    static DataBDataReader_ptr _duplicate (DataBDataReader_ptr obj);
+
+    static void _tao_release (DataBDataReader_ptr obj);
+
+    static DataBDataReader_ptr _narrow (::CORBA::Object_ptr obj);
+    static DataBDataReader_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
+    static DataBDataReader_ptr _nil (void);
+
+    virtual ::DDS::ReturnCode_t read (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq,
+      ::CORBA::Long max_samples,
+      ::DDS::SampleStateMask sample_states,
+      ::DDS::ViewStateMask view_states,
+      ::DDS::InstanceStateMask instance_states) = 0;
+
+    virtual ::DDS::ReturnCode_t take (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq,
+      ::CORBA::Long max_samples,
+      ::DDS::SampleStateMask sample_states,
+      ::DDS::ViewStateMask view_states,
+      ::DDS::InstanceStateMask instance_states) = 0;
+
+    virtual ::DDS::ReturnCode_t read_w_condition (
+      ::TestA::DataBSeq & data_values,
+      ::DDS::SampleInfoSeq & sample_infos,
+      ::CORBA::Long max_samples,
+      ::DDS::ReadCondition_ptr a_condition) = 0;
+
+    virtual ::DDS::ReturnCode_t take_w_condition (
+      ::TestA::DataBSeq & data_values,
+      ::DDS::SampleInfoSeq & sample_infos,
+      ::CORBA::Long max_samples,
+      ::DDS::ReadCondition_ptr a_condition) = 0;
+
+    virtual ::DDS::ReturnCode_t read_next_sample (
+      ::TestA::DataB & received_data,
+      ::DDS::SampleInfo & sample_info) = 0;
+
+    virtual ::DDS::ReturnCode_t take_next_sample (
+      ::TestA::DataB & received_data,
+      ::DDS::SampleInfo & sample_info) = 0;
+
+    virtual ::DDS::ReturnCode_t read_instance (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t a_handle,
+      ::DDS::SampleStateMask sample_states,
+      ::DDS::ViewStateMask view_states,
+      ::DDS::InstanceStateMask instance_states) = 0;
+
+    virtual ::DDS::ReturnCode_t take_instance (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t a_handle,
+      ::DDS::SampleStateMask sample_states,
+      ::DDS::ViewStateMask view_states,
+      ::DDS::InstanceStateMask instance_states) = 0;
+
+    virtual ::DDS::ReturnCode_t read_instance_w_condition (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & sample_infos,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t a_handle,
+      ::DDS::ReadCondition_ptr a_condition) = 0;
+
+    virtual ::DDS::ReturnCode_t take_instance_w_condition (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & sample_infos,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t a_handle,
+      ::DDS::ReadCondition_ptr a_condition) = 0;
+
+    virtual ::DDS::ReturnCode_t read_next_instance (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t a_handle,
+      ::DDS::SampleStateMask sample_states,
+      ::DDS::ViewStateMask view_states,
+      ::DDS::InstanceStateMask instance_states) = 0;
+
+    virtual ::DDS::ReturnCode_t take_next_instance (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t a_handle,
+      ::DDS::SampleStateMask sample_states,
+      ::DDS::ViewStateMask view_states,
+      ::DDS::InstanceStateMask instance_states) = 0;
+
+    virtual ::DDS::ReturnCode_t read_next_instance_w_condition (
+      ::TestA::DataBSeq & data_values,
+      ::DDS::SampleInfoSeq & sample_infos,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t previous_handle,
+      ::DDS::ReadCondition_ptr a_condition) = 0;
+
+    virtual ::DDS::ReturnCode_t take_next_instance_w_condition (
+      ::TestA::DataBSeq & data_values,
+      ::DDS::SampleInfoSeq & sample_infos,
+      ::CORBA::Long max_samples,
+      ::DDS::InstanceHandle_t previous_handle,
+      ::DDS::ReadCondition_ptr a_condition) = 0;
+
+    virtual ::DDS::ReturnCode_t return_loan (
+      ::TestA::DataBSeq & received_data,
+      ::DDS::SampleInfoSeq & info_seq) = 0;
+
+    virtual ::DDS::ReturnCode_t get_key_value (
+      ::TestA::DataB & key_holder,
+      ::DDS::InstanceHandle_t handle) = 0;
+
+    virtual ::DDS::InstanceHandle_t lookup_instance (
+      const ::TestA::DataB & instance_data) = 0;
+
+    // TAO_IDL - Generated from
+    // be\be_visitor_interface\interface_ch.cpp:137
+
+    virtual ::CORBA::Boolean _is_a (const char *type_id);
+    virtual const char* _interface_repository_id (void) const;
+    virtual ::CORBA::Boolean marshal (TAO_OutputCDR &cdr);
+  
+  protected:
+    // Abstract or local interface only.
+    DataBDataReader (void);
+
+    
+
+    virtual ~DataBDataReader (void);
+  
+  private:
+    // Private and unimplemented for concrete interfaces.
+    DataBDataReader (const DataBDataReader &);
+
+    void operator= (const DataBDataReader &);
+  };
+
+// TAO_IDL - Generated from
+// be\be_visitor_module\module_ch.cpp:64
+
+} // module TestA
+
+// TAO_IDL - Generated from
 // be\be_visitor_arg_traits.cpp:66
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
@@ -496,6 +848,60 @@ namespace TAO
     static ::TestA::DataADataReader_ptr nil (void);
     static ::CORBA::Boolean marshal (
         const ::TestA::DataADataReader_ptr p,
+        TAO_OutputCDR & cdr);
+  };
+
+#endif /* end #if !defined */
+
+#if !defined (_TESTA_DATABTYPESUPPORT__TRAITS_)
+#define _TESTA_DATABTYPESUPPORT__TRAITS_
+
+  template<>
+  struct  Objref_Traits< ::TestA::DataBTypeSupport>
+  {
+    static ::TestA::DataBTypeSupport_ptr duplicate (
+        ::TestA::DataBTypeSupport_ptr p);
+    static void release (
+        ::TestA::DataBTypeSupport_ptr p);
+    static ::TestA::DataBTypeSupport_ptr nil (void);
+    static ::CORBA::Boolean marshal (
+        const ::TestA::DataBTypeSupport_ptr p,
+        TAO_OutputCDR & cdr);
+  };
+
+#endif /* end #if !defined */
+
+#if !defined (_TESTA_DATABDATAWRITER__TRAITS_)
+#define _TESTA_DATABDATAWRITER__TRAITS_
+
+  template<>
+  struct  Objref_Traits< ::TestA::DataBDataWriter>
+  {
+    static ::TestA::DataBDataWriter_ptr duplicate (
+        ::TestA::DataBDataWriter_ptr p);
+    static void release (
+        ::TestA::DataBDataWriter_ptr p);
+    static ::TestA::DataBDataWriter_ptr nil (void);
+    static ::CORBA::Boolean marshal (
+        const ::TestA::DataBDataWriter_ptr p,
+        TAO_OutputCDR & cdr);
+  };
+
+#endif /* end #if !defined */
+
+#if !defined (_TESTA_DATABDATAREADER__TRAITS_)
+#define _TESTA_DATABDATAREADER__TRAITS_
+
+  template<>
+  struct  Objref_Traits< ::TestA::DataBDataReader>
+  {
+    static ::TestA::DataBDataReader_ptr duplicate (
+        ::TestA::DataBDataReader_ptr p);
+    static void release (
+        ::TestA::DataBDataReader_ptr p);
+    static ::TestA::DataBDataReader_ptr nil (void);
+    static ::CORBA::Boolean marshal (
+        const ::TestA::DataBDataReader_ptr p,
         TAO_OutputCDR & cdr);
   };
 
